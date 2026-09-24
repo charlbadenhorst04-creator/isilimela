@@ -1,0 +1,292 @@
+{
+  "about": "Daily facts for Isilimela. 'daily' entries are shown on their date (SAST); on days without one, the page rotates through 'library'. form is one of: isilimela, galaxy, world, helix, knot, heart, hole, word (word also needs 'word', max 14 characters).",
+  "daily": [
+    {
+      "title": "The digging stars",
+      "fact": "In isiXhosa tradition, the pre-dawn rising of isiLimela (the Pleiades) in winter signalled that it was time to start digging the fields. The cluster itself is about 444 light-years away and only around 100 million years old.",
+      "form": "isilimela",
+      "source": {
+        "label": "ESA Gaia",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia"
+      },
+      "date": "2026-09-24"
+    }
+  ],
+  "library": [
+    {
+      "title": "A galactic year",
+      "fact": "The Sun takes about 230 million years to orbit the centre of the Milky Way. The last time Earth was on this side of the galaxy, the first dinosaurs were only just appearing.",
+      "form": "galaxy",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/sun/"
+      }
+    },
+    {
+      "title": "Saturn would float",
+      "fact": "Saturn's average density is about 0.69 grams per cubic centimetre, less than water. In a big enough bathtub, it would float.",
+      "form": "world",
+      "source": {
+        "label": "NASA Science: Saturn facts",
+        "url": "https://science.nasa.gov/saturn/facts/"
+      }
+    },
+    {
+      "title": "Thin as a building",
+      "fact": "Saturn's main rings stretch hundreds of thousands of kilometres across, yet in most places they are only about 10 metres thick. They are made mostly of chunks of water ice.",
+      "form": "world",
+      "source": {
+        "label": "NASA Science: Saturn facts",
+        "url": "https://science.nasa.gov/saturn/facts/"
+      }
+    },
+    {
+      "title": "The first photo of a black hole",
+      "fact": "In April 2019 the Event Horizon Telescope released the first image of a black hole: M87*, 55 million light-years away and about 6.5 billion times the mass of the Sun.",
+      "form": "hole",
+      "source": {
+        "label": "Event Horizon Telescope",
+        "url": "https://eventhorizontelescope.org/"
+      }
+    },
+    {
+      "title": "Our own black hole",
+      "fact": "At the centre of the Milky Way sits Sagittarius A*, a black hole about 4 million times the mass of the Sun. Its first image was released in May 2022. From South Africa it passes almost directly overhead in winter.",
+      "form": "hole",
+      "source": {
+        "label": "Event Horizon Telescope",
+        "url": "https://eventhorizontelescope.org/"
+      }
+    },
+    {
+      "title": "You are made of stars",
+      "fact": "The nitrogen in your DNA, the calcium in your bones and the iron in your blood were forged inside stars that lived and died before the Sun was born.",
+      "form": "helix",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "A teaspoon of neutron star",
+      "fact": "Neutron stars pack more than the mass of the Sun into a ball about 20 km wide. A single teaspoon of their material would weigh around a billion tonnes on Earth.",
+      "form": "word",
+      "word": "NEUTRON",
+      "source": {
+        "label": "NASA Science: neutron stars",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "A day longer than a year",
+      "fact": "Venus spins so slowly that one rotation takes 243 Earth days, while one orbit of the Sun takes only 225. It also spins backwards compared to most planets.",
+      "form": "word",
+      "word": "VENUS",
+      "source": {
+        "label": "NASA Science: Venus",
+        "url": "https://science.nasa.gov/venus/"
+      }
+    },
+    {
+      "title": "Andromeda is coming, maybe",
+      "fact": "The Andromeda galaxy is approaching us at about 110 km per second. A 2025 study using Hubble and Gaia data found only around a 50% chance that it merges with the Milky Way in the next 10 billion years.",
+      "form": "galaxy",
+      "source": {
+        "label": "NASA Hubble",
+        "url": "https://science.nasa.gov/mission/hubble/"
+      }
+    },
+    {
+      "title": "How big is everything we can see?",
+      "fact": "The observable universe is about 93 billion light-years across. That's bigger than 13.8 billion years of light travel would suggest, because space itself kept expanding while the light was on its way.",
+      "form": "galaxy",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "Africa's giant eye",
+      "fact": "The Southern African Large Telescope (SALT) near Sutherland in the Northern Cape has a mirror of 91 hexagonal segments, about 11 metres across. It is the largest single optical telescope in the southern hemisphere.",
+      "form": "word",
+      "word": "SALT",
+      "source": {
+        "label": "SALT",
+        "url": "https://www.salt.ac.za/"
+      }
+    },
+    {
+      "title": "Listening from the Karoo",
+      "fact": "MeerKAT, 64 radio dishes in the Karoo, produced one of the sharpest radio images ever made of the Milky Way's centre, revealing hundreds of mysterious magnetic filaments. It is a precursor to the Square Kilometre Array.",
+      "form": "word",
+      "word": "MEERKAT",
+      "source": {
+        "label": "SARAO",
+        "url": "https://www.sarao.ac.za/"
+      }
+    },
+    {
+      "title": "Beetles that read the Milky Way",
+      "fact": "Researchers from Wits and Lund University showed in 2013 that dung beetles use the glow of the Milky Way to roll their balls in a straight line. It is the first animal known to navigate by the galaxy.",
+      "form": "galaxy",
+      "source": {
+        "label": "Dacke et al., Current Biology (2013)",
+        "url": "https://doi.org/10.1016/j.cub.2012.12.034"
+      }
+    },
+    {
+      "title": "Two galaxies you can see from home",
+      "fact": "From a dark South African sky you can see the Large and Small Magellanic Clouds with your naked eye. They are satellite galaxies of the Milky Way, about 160,000 and 200,000 light-years away.",
+      "form": "galaxy",
+      "source": {
+        "label": "ESA",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science"
+      }
+    },
+    {
+      "title": "Earth's oldest scar",
+      "fact": "The Vredefort Dome in the Free State is the largest verified impact structure on Earth. It formed about 2 billion years ago when an asteroid several kilometres wide struck, and it is a UNESCO World Heritage Site.",
+      "form": "word",
+      "word": "VREDEFORT",
+      "source": {
+        "label": "UNESCO World Heritage Centre",
+        "url": "https://whc.unesco.org/en/list/1162"
+      }
+    },
+    {
+      "title": "Betelgeuse sneezed",
+      "fact": "In 2019–2020 the red supergiant Betelgeuse dimmed dramatically. Astronomers found it had blown off a huge cloud of gas that cooled into dust and briefly blocked its light.",
+      "form": "word",
+      "word": "BETELGEUSE",
+      "source": {
+        "label": "NASA Hubble",
+        "url": "https://science.nasa.gov/mission/hubble/"
+      }
+    },
+    {
+      "title": "A storm bigger than Earth",
+      "fact": "Jupiter's Great Red Spot is a storm wider than our whole planet, and it has been raging for at least 150 years. It has been slowly shrinking since the late 1800s.",
+      "form": "world",
+      "source": {
+        "label": "NASA Science: Jupiter",
+        "url": "https://science.nasa.gov/jupiter/"
+      }
+    },
+    {
+      "title": "The tallest volcano",
+      "fact": "Olympus Mons on Mars stands about 22 km high, roughly two and a half times the height of Mount Everest, and its base is about as wide as Poland.",
+      "form": "word",
+      "word": "OLYMPUS",
+      "source": {
+        "label": "NASA Science: Mars",
+        "url": "https://science.nasa.gov/mars/"
+      }
+    },
+    {
+      "title": "The oldest light",
+      "fact": "The cosmic microwave background is light released about 380,000 years after the Big Bang. It fills the whole sky and has cooled to just 2.725 degrees above absolute zero.",
+      "form": "word",
+      "word": "CMB",
+      "source": {
+        "label": "ESA Planck",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Planck"
+      }
+    },
+    {
+      "title": "The little green men signal",
+      "fact": "In 1967 PhD student Jocelyn Bell Burnell noticed a signal pulsing every 1.34 seconds. It was nicknamed 'LGM-1' for little green men, but turned out to be the first known pulsar, a spinning neutron star.",
+      "form": "word",
+      "word": "PULSAR",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "There's a heart in the sky",
+      "fact": "The Heart Nebula (IC 1805) is a glowing cloud of gas about 7,500 light-years away in Cassiopeia, sculpted by the radiation and winds of young, hot stars at its core.",
+      "form": "heart",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "Our nearest neighbour",
+      "fact": "Proxima Centauri, 4.24 light-years away, is the closest star to the Sun. Its bright companions Alpha Centauri A and B form the brighter of the two Pointers next to the Southern Cross.",
+      "form": "word",
+      "word": "PROXIMA",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "The Sun is almost everything",
+      "fact": "The Sun holds about 99.8% of all the mass in the Solar System. Jupiter makes up most of the rest; Earth barely registers.",
+      "form": "word",
+      "word": "SOL",
+      "source": {
+        "label": "NASA Science: the Sun",
+        "url": "https://science.nasa.gov/sun/"
+      }
+    },
+    {
+      "title": "The Moon is leaving",
+      "fact": "Laser beams bounced off mirrors left by Apollo astronauts show the Moon drifting away from Earth by about 3.8 cm every year, about as fast as your fingernails grow.",
+      "form": "word",
+      "word": "MOON",
+      "source": {
+        "label": "NASA Science: the Moon",
+        "url": "https://science.nasa.gov/moon/"
+      }
+    },
+    {
+      "title": "The farthest thing we've built",
+      "fact": "Voyager 1, launched in 1977, entered interstellar space in 2012 and is now more than 25 billion km from Earth. Its radio signals take over 23 hours to reach us.",
+      "form": "word",
+      "word": "VOYAGER",
+      "source": {
+        "label": "NASA JPL: Voyager",
+        "url": "https://science.nasa.gov/mission/voyager/"
+      }
+    },
+    {
+      "title": "No pole star in the south",
+      "fact": "The north has Polaris, but the south celestial pole has no bright star; the nearest is faint Sigma Octantis. South Africans find south by extending the long axis of the Southern Cross instead.",
+      "form": "word",
+      "word": "CRUX",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "Magnetic knots on the Sun",
+      "fact": "Solar flares happen when twisted, knotted magnetic field lines in the Sun's atmosphere snap and reconnect, releasing more energy in minutes than humanity uses in many thousands of years.",
+      "form": "knot",
+      "source": {
+        "label": "NASA Science: the Sun",
+        "url": "https://science.nasa.gov/sun/"
+      }
+    },
+    {
+      "title": "Almost all hydrogen",
+      "fact": "About 98% of the ordinary matter in the universe is hydrogen and helium made in the first few minutes after the Big Bang. Everything else, including rock, water and you, was made later by stars.",
+      "form": "helix",
+      "source": {
+        "label": "NASA Science",
+        "url": "https://science.nasa.gov/universe/"
+      }
+    },
+    {
+      "title": "The digging stars",
+      "fact": "In isiXhosa tradition, the pre-dawn rising of isiLimela (the Pleiades) in winter signalled that it was time to start digging the fields. The cluster itself is about 444 light-years away and only around 100 million years old.",
+      "form": "isilimela",
+      "source": {
+        "label": "ESA Gaia",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Gaia"
+      }
+    }
+  ]
+}

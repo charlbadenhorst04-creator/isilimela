@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Isilimela</title>
-<meta name="description" content="Isilimela: weave 100,000 stars into the Pleiades, the Milky Way, worlds, knots and your own words. A real-time WebGL star loom named for the digging stars that open the South African planting season.">
+<title>Former of Light</title>
+<meta name="description" content="Former of Light (Yotzer Or): a new fact about the universe every day, told by 100,000 stars that rearrange themselves into its subject.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Frank+Ruhl+Libre:wght@400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="style.css">
 <script type="importmap">
 {
@@ -24,11 +24,29 @@
 <div class="veil" id="veil"><span>igniting 100,000 stars</span></div>
 
 <header class="masthead">
-  <h1 class="wordmark" aria-label="Isilimela">
-    <span>I</span><span>S</span><span>I</span><span>L</span><span>I</span><span>M</span><span>E</span><span>L</span><span>A</span>
+  <h1 class="wordmark" aria-label="Former of Light">
+    <span style="--i:0">F</span><span style="--i:1">O</span><span style="--i:2">R</span><span style="--i:3">M</span><span style="--i:4">E</span><span style="--i:5">R</span><span class="gap" style="--i:6">O</span><span style="--i:7">F</span><span class="gap" style="--i:8">L</span><span style="--i:9">I</span><span style="--i:10">G</span><span style="--i:11">H</span><span style="--i:12">T</span>
   </h1>
-  <p class="tagline">when the digging stars rise, we plant</p>
+  <p class="scripture"><span class="hebrew" lang="he" dir="rtl">יוֹצֵר אוֹר</span><span class="ref">“I form the light” · Isaiah 45:7</span></p>
+  <p class="tagline">He counts the number of the stars; He calls them all by name · Psalm 147:4</p>
 </header>
+
+<section class="fact" id="fact" aria-live="polite" aria-labelledby="factTitle">
+  <div class="fact-head">
+    <span class="fact-eyebrow">fact of the day · <span id="factDate">today</span></span>
+    <button type="button" id="factToggle" aria-expanded="true" aria-controls="factBody">hide</button>
+  </div>
+  <div class="fact-body" id="factBody">
+    <h2 id="factTitle">Reading the sky…</h2>
+    <p id="factText"></p>
+    <a id="factSource" href="#" target="_blank" rel="noopener" hidden></a>
+    <div class="fact-nav">
+      <button type="button" id="factPrev">‹ earlier</button>
+      <button type="button" id="factShow">weave it</button>
+      <button type="button" id="factNext" disabled>later ›</button>
+    </div>
+  </div>
+</section>
 
 <aside class="plate" aria-live="polite">
   <div class="plate-label">now weaving</div>
@@ -45,7 +63,7 @@
     <button type="submit">weave</button>
   </form>
   <div class="toggles">
-    <button type="button" id="tourBtn" aria-pressed="true">tour on</button>
+    <button type="button" id="tourBtn" aria-pressed="false">tour off</button>
     <button type="button" id="paletteBtn">shift hue</button>
   </div>
 </nav>

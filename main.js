@@ -451,7 +451,7 @@ document.getElementById('writeForm').addEventListener('submit', (e) => {
   weave('word', word);
 });
 
-let tourOn = !reducedMotion, tourNext = 9;
+let tourOn = false, tourNext = 9;
 const tourBtn = document.getElementById('tourBtn');
 function setTour(on) {
   tourOn = on;
@@ -555,6 +555,64 @@ function tick() {
   requestAnimationFrame(tick);
 }
 
-weave(0);
+// ---------------------------------------------------------------------------
+// Fact of the day: facts.json is refreshed every morning; the stars weave its subject
+// ---------------------------------------------------------------------------
+const DAY = 86400000;
+const factEl = document.getElementById('fact');
+const fact = { data: null, offset: 0, entry: null };
+const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+
+function factFor(date) {
+  const key = ymd(date);
+  const daily = fact.data.daily.find((e) => e.date === key);
+  if (daily) return daily;
+  const lib = fact.data.library;
+  const dayNumber = Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / DAY);
+  return lib[((dayNumber % lib.length) + lib.length) % lib.length];
+}
+
+function weaveFact(e) {
+  if (e.form === 'word' && e.word) return weave('word', e.word.toUpperCase().slice(0, 14));
+  const i = FORMS.findIndex((f) => f.key === e.form);
+  weave(i === -1 ? 0 : i);
+}
+
+function showFact(offset, andWeave = true) {
+  fact.offset = offset;
+  const date = new Date(Date.now() + offset * DAY);
+  const e = fact.entry = factFor(date);
+  factEl.classList.add('swap');
+  setTimeout(() => {
+    document.getElementById('factDate').textContent = offset === 0 ? 'today' :
+      date.toLocaleDateString('en-ZA', { weekday: 'short', day: 'numeric', month: 'short' });
+    document.getElementById('factTitle').textContent = e.title;
+    document.getElementById('factText').textContent = e.fact;
+    const src = document.getElementById('factSource');
+    src.textContent = e.source?.label ?? '';
+    src.href = e.source?.url ?? '#';
+    src.hidden = !e.source;
+    document.getElementById('factNext').disabled = offset >= 0;
+    document.getElementById('factPrev').disabled = offset <= -60;
+    factEl.classList.remove('swap');
+  }, 250);
+  if (andWeave) { setTour(false); weaveFact(e); }
+}
+
+document.getElementById('factPrev').addEventListener('click', () => showFact(fact.offset - 1));
+document.getElementById('factNext').addEventListener('click', () => showFact(Math.min(0, fact.offset + 1)));
+document.getElementById('factShow').addEventListener('click', () => { if (fact.entry) { setTour(false); weaveFact(fact.entry); } });
+const factToggle = document.getElementById('factToggle');
+factToggle.addEventListener('click', () => {
+  const open = factEl.classList.toggle('closed') === false;
+  factToggle.setAttribute('aria-expanded', String(open));
+  factToggle.textContent = open ? 'hide' : 'read';
+});
+
+fetch('facts.json', { cache: 'no-cache' })
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((data) => { fact.data = data; showFact(0); })
+  .catch(() => { factEl.hidden = true; weave(0); });
+
 tick();
 requestAnimationFrame(() => setTimeout(() => document.getElementById('veil').classList.add('gone'), 300));

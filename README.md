@@ -1,13 +1,25 @@
-# Isilimela ✦
+# Former of Light ✦
 
-**Weave 100,000 stars into the Pleiades, the Milky Way, ringed worlds, knots, a heart, a black hole, or your own words.**
+**יוֹצֵר אוֹר · “I form the light” (Isaiah 45:7)**
 
-*Isilimela* is the isiXhosa and isiZulu name for the Pleiades, the "digging stars".
-When they rise in the east before dawn in winter, it is time to start hoeing the fields
-for the planting season. Among amaXhosa the star cluster was also used to count the years
-since a man's initiation. This project borrows the name for a small loom of starlight:
-every form is woven from the same 100,000 particles, and they fly between shapes on arcs
-through space.
+> He counts the number of the stars; He calls them all by name. (Psalm 147:4)
+
+**A new fact about the universe every day, told by 100,000 stars that rearrange themselves into its subject.**
+
+The name is the English of *Yotzer Or*, the Hebrew words of Isaiah 45:7 and of an ancient
+morning blessing that praises the One who forms light. Each morning the page shows a fresh fact,
+and the stars fly on arcs through space to become it: a black hole fact turns them into an
+accretion disk, a Saturn fact into a ringed world, a fact about MeerKAT spells MEERKAT in starlight.
+
+![Fact of the day](screenshots/0-fact-of-the-day.png)
+
+## A fact every day
+
+- Facts live in [`facts.json`](facts.json). Entries in `daily` appear on their date (South African
+  time). On days without one, the page rotates through the `library`, so there is always a fact.
+- A scheduled Claude routine runs every morning at 04:00 SAST. It researches one new, verifiable
+  fact with a reputable source, adds it to `daily`, and pushes to `main`, which redeploys the site.
+- Use **‹ earlier** to read the last 60 days, and **weave it** to have the stars form the fact again.
 
 ![Isilimela, the Pleiades](screenshots/1-isilimela.png)
 
@@ -57,7 +69,7 @@ with three.js loaded from jsDelivr through an import map.
 ## Run it locally
 
 ```bash
-git clone https://github.com/<you>/isilimela.git
+git clone https://github.com/charlbadenhorst04-creator/isilimela.git
 cd isilimela
 python3 -m http.server 8000   # or: npx serve .
 ```
