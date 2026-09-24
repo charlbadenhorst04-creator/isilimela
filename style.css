@@ -127,10 +127,11 @@ body {
 }
 
 @media (max-width: 640px) {
-  .plate { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 250px); right: 16px; }
+  .plate { top: calc(env(safe-area-inset-top, 0px) + 96px); left: 16px; right: 16px; text-align: left; }
+  .plate-name { margin-top: 2px; }
   .write input { width: 140px; }
   .hint { font-size: 9px; letter-spacing: 0.1em; }
-  .dock { bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); }
+  .dock { bottom: calc(env(safe-area-inset-bottom, 0px) + 52px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

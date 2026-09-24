@@ -9,6 +9,14 @@ since a man's initiation. This project borrows the name for a small loom of star
 every form is woven from the same 100,000 particles, and they fly between shapes on arcs
 through space.
 
+![Isilimela, the Pleiades](screenshots/1-isilimela.png)
+
+| | |
+|---|---|
+| ![Umthala](screenshots/2-umthala.png) | ![Event Horizon](screenshots/7-event-horizon.png) |
+| ![Ringed World](screenshots/3-ringed-world.png) | ![Double Helix](screenshots/4-helix.png) |
+| ![Heart](screenshots/6-heart.png) | ![Your word](screenshots/8-your-word.png) |
+
 ## The forms
 
 | Key | Form | What it is |

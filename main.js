@@ -60,10 +60,10 @@ function galaxy() {
     const r = 0.8 + Math.pow(rand(), 1.4) * 10.5;
     const arm = (n % arms) / arms * Math.PI * 2;
     const a = arm + r * 0.55;
-    const spread = 0.12 + r * 0.06;
-    p[i] = Math.cos(a) * r + gauss() * spread * r * 0.35;
+    const spread = 0.2 + r * 0.07;
+    p[i] = Math.cos(a) * r + gauss() * spread;
     p[i + 1] = gauss() * 0.18 * (1.2 - r / 12);
-    p[i + 2] = Math.sin(a) * r + gauss() * spread * r * 0.35;
+    p[i + 2] = Math.sin(a) * r + gauss() * spread;
   }
   return p;
 }
@@ -228,12 +228,12 @@ async function wordShape(text) {
 // ---------------------------------------------------------------------------
 const FORMS = [
   { key: 'isilimela', label: 'isilimela', name: 'Isilimela', cat: 'M45 · the Pleiades, digging stars of the planting season', make: isilimela, swirl: 0, colors: ['#6f9bff', '#a9c4ff', '#ffffff'] },
-  { key: 'galaxy', label: 'umthala', name: 'Umthala', cat: 'isiZulu for the Milky Way · barred spiral, 100 billion suns', make: galaxy, swirl: 0.35, colors: ['#4f6bff', '#b86bff', '#ffd9a8'] },
+  { key: 'galaxy', label: 'umthala', name: 'Umthala', cat: 'isiZulu for the Milky Way · barred spiral, 100 billion suns', make: galaxy, swirl: 0.12, colors: ['#4f6bff', '#b86bff', '#ffd9a8'] },
   { key: 'world', label: 'ringed world', name: 'Ringed World', cat: 'Saturn analogue · Cassini division at 1.9 R', make: ringedWorld, swirl: 0, colors: ['#ffae5c', '#ff6b8b', '#fff0d6'] },
   { key: 'helix', label: 'helix', name: 'Double Helix', cat: 'B-DNA · 10.5 base pairs per turn', make: helix, swirl: 0, colors: ['#2fe0c3', '#3f6dff', '#e6fffa'] },
   { key: 'knot', label: 'trefoil', name: 'Trefoil Knot', cat: 'torus knot (p, q) = (2, 3)', make: trefoil, swirl: 0, colors: ['#ff5fa2', '#6d5cff', '#ffe6f2'] },
-  { key: 'heart', label: 'heart', name: 'Taubin Heart', cat: '(x²+9⁄4y²+z²−1)³ = x²z³ + 9⁄80y²z³', make: heart, swirl: 0, colors: ['#ff3d64', '#ff9166', '#fff0f3'] },
-  { key: 'hole', label: 'event horizon', name: 'Event Horizon', cat: 'Kerr black hole · disk, photon ring, jets', make: eventHorizon, swirl: 1.1, colors: ['#ff7a2e', '#ff3d7f', '#fff3dc'] },
+  { key: 'heart', label: 'heart', name: 'Taubin Heart', cat: '(x² + 9/4·y² + z² − 1)³ = x²z³ + 9/80·y²z³', make: heart, swirl: 0, glow: 0.5, colors: ['#ff3d64', '#ff9166', '#fff0f3'] },
+  { key: 'hole', label: 'event horizon', name: 'Event Horizon', cat: 'Kerr black hole · disk, photon ring, jets', make: eventHorizon, swirl: 1.1, diff: true, colors: ['#ff7a2e', '#ff3d7f', '#fff3dc'] },
 ];
 const WORD_COLORS = ['#8fa8ff', '#ff9ad1', '#ffffff'];
 
@@ -260,7 +260,7 @@ const uniforms = {
   uTime: { value: 0 }, uMix: { value: 0 },
   uSize: { value: isSmall ? 34 : 42 }, uPR: { value: renderer.getPixelRatio() },
   uIntensity: { value: 0.62 },
-  uSwirlFrom: { value: 0 }, uSwirlTo: { value: 0 },
+  uSwirlFrom: { value: 0 }, uSwirlTo: { value: 0 }, uDiff: { value: 0 },
   uMouse: { value: new THREE.Vector3(999, 999, 999) },
   uShockPos: { value: new THREE.Vector3() }, uShockTime: { value: -100 },
   uC1: { value: new THREE.Color() }, uC2: { value: new THREE.Color() }, uC3: { value: new THREE.Color() },
@@ -270,7 +270,7 @@ const starMat = new THREE.ShaderMaterial({
   uniforms,
   transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
   vertexShader: /* glsl */`
-    uniform float uTime, uMix, uSize, uPR, uShockTime, uSwirlFrom, uSwirlTo, uIntensity;
+    uniform float uTime, uMix, uSize, uPR, uShockTime, uSwirlFrom, uSwirlTo, uIntensity, uDiff;
     uniform vec3 uMouse, uShockPos, uC1, uC2, uC3;
     attribute vec3 aFrom, aTo, aDir;
     attribute float aRand;
@@ -278,7 +278,7 @@ const starMat = new THREE.ShaderMaterial({
     varying float vAlpha;
 
     vec3 swirl(vec3 p, float ph) {
-      float a = ph / (1.0 + length(p.xz) * 0.35);
+      float a = ph * mix(1.0, 1.0 / (1.0 + length(p.xz) * 0.35), uDiff);
       float c = cos(a), s = sin(a);
       return vec3(c * p.x - s * p.z, p.y, s * p.x + c * p.z);
     }
@@ -365,13 +365,14 @@ scene.add(dust);
 // Morphing
 // ---------------------------------------------------------------------------
 const state = { current: -1, word: '', tweenStart: 0, tweenDur: 3.6, fromSwirl: 0, toSwirl: 0, phaseFrom: 0, phaseTo: 0 };
-const palette = { c1: new THREE.Color(), c2: new THREE.Color(), c3: new THREE.Color(), hue: 0, src: FORMS[0].colors };
+const palette = { c1: new THREE.Color(), c2: new THREE.Color(), c3: new THREE.Color(), hue: 0, glow: 0.62, src: FORMS[0].colors };
 const cache = new Map();
 
 function swirlXZ(arr, i, phase) {
   if (!phase) return;
   const x = arr[i], z = arr[i + 2];
-  const a = phase / (1 + Math.hypot(x, z) * 0.35), c = Math.cos(a), s = Math.sin(a);
+  const d = uniforms.uDiff.value;
+  const a = phase * ((1 - d) + d / (1 + Math.hypot(x, z) * 0.35)), c = Math.cos(a), s = Math.sin(a);
   arr[i] = c * x - s * z; arr[i + 2] = s * x + c * z;
 }
 
@@ -396,7 +397,7 @@ async function weave(index, word) {
   let target, meta;
   if (index === 'word') {
     target = await wordShape(word);
-    meta = { name: `“${word}”`, cat: `catalogue entry · ${word.length} glyphs, ${COUNT.toLocaleString()} stars`, swirl: 0, colors: WORD_COLORS };
+    meta = { name: `“${word}”`, cat: `catalogue entry · ${word.length} glyphs, ${COUNT.toLocaleString()} stars`, swirl: 0, glow: 0.38, colors: WORD_COLORS };
   } else {
     if (!cache.has(index)) cache.set(index, FORMS[index].make());
     target = cache.get(index);
@@ -408,10 +409,12 @@ async function weave(index, word) {
   geo.attributes.aTo.needsUpdate = true;
   state.phaseFrom = 0; state.phaseTo = 0;
   state.toSwirl = meta.swirl;
+  uniforms.uDiff.value = meta.diff ? 1 : 0;
   state.tweenStart = t;
   state.tweenDur = state.current === -1 ? 4.2 : 2.8;
   state.current = index;
   palette.src = meta.colors;
+  palette.glow = meta.glow ?? 0.62;
   setPlate(meta.name, meta.cat);
   document.querySelectorAll('#forms button').forEach((b, i) => b.setAttribute('aria-current', String(i === index)));
 }
@@ -443,6 +446,7 @@ document.getElementById('writeForm').addEventListener('submit', (e) => {
   e.preventDefault();
   const word = document.getElementById('writeInput').value.trim().toUpperCase();
   if (!word) return;
+  document.getElementById('writeInput').blur();
   setTour(false);
   weave('word', word);
 });
@@ -525,6 +529,8 @@ function tick() {
     tmp.set(palette.src[i]).offsetHSL(palette.hue, 0, 0);
     uniforms['u' + c.toUpperCase()].value.lerp(tmp, k);
   });
+
+  uniforms.uIntensity.value += (palette.glow - uniforms.uIntensity.value) * k;
 
   // opening dolly
   if (t < 5) {
