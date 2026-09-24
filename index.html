@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Isilimela</title>
+<meta name="description" content="Isilimela: weave 100,000 stars into the Pleiades, the Milky Way, worlds, knots and your own words. A real-time WebGL star loom named for the digging stars that open the South African planting season.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="Interactive 3D star field"></canvas>
+
+<div class="veil" id="veil"><span>igniting 100,000 stars</span></div>
+
+<header class="masthead">
+  <h1 class="wordmark" aria-label="Isilimela">
+    <span>I</span><span>S</span><span>I</span><span>L</span><span>I</span><span>M</span><span>E</span><span>L</span><span>A</span>
+  </h1>
+  <p class="tagline">when the digging stars rise, we plant</p>
+</header>
+
+<aside class="plate" aria-live="polite">
+  <div class="plate-label">now weaving</div>
+  <div class="plate-name" id="plateName">Isilimela</div>
+  <div class="plate-cat" id="plateCat">M45 · the Pleiades, digging stars of the planting season</div>
+  <div class="plate-stats"><span id="count">100,000</span> stars · <span id="fps">60</span> fps</div>
+</aside>
+
+<nav class="dock" aria-label="Choose a form">
+  <div class="forms" id="forms"></div>
+  <form class="write" id="writeForm" autocomplete="off">
+    <label for="writeInput" class="sr">Write a word in the stars</label>
+    <input id="writeInput" maxlength="14" placeholder="write in the stars…" value="">
+    <button type="submit">weave</button>
+  </form>
+  <div class="toggles">
+    <button type="button" id="tourBtn" aria-pressed="true">tour on</button>
+    <button type="button" id="paletteBtn">shift hue</button>
+  </div>
+</nav>
+
+<p class="hint">drag to orbit · scroll to zoom · click to send a shockwave · keys 1–7</p>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>

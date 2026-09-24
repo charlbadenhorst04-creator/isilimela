@@ -1,0 +1,138 @@
+:root {
+  color-scheme: dark;
+  --void: #04050c;
+  --ink: #0b0d1c;
+  --star: #eef0ff;
+  --dust: #8d92b8;
+  --glow: #9fb4ff;
+  --ember: #ffb38a;
+  --glass: rgba(18, 21, 44, 0.42);
+  --edge: rgba(170, 185, 255, 0.16);
+  --display: "Syncopate", "Arial Black", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--void);
+  color: var(--star);
+  font: 300 13px/1.5 var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; touch-action: none; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ---------- intro veil ---------- */
+.veil {
+  position: fixed; inset: 0; z-index: 10;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 50% 50%, #0d1030 0%, var(--void) 70%);
+  transition: opacity 1.6s ease, visibility 1.6s;
+  pointer-events: none;
+}
+.veil span { letter-spacing: 0.4em; text-transform: uppercase; font-size: 11px; color: var(--dust); animation: pulse 1.4s ease-in-out infinite; }
+.veil.gone { opacity: 0; visibility: hidden; }
+@keyframes pulse { 50% { opacity: 0.3; } }
+
+/* ---------- masthead ---------- */
+.masthead {
+  position: fixed; z-index: 2;
+  top: calc(env(safe-area-inset-top, 0px) + 28px); left: max(16px, 3vw);
+  pointer-events: none;
+}
+.wordmark {
+  margin: 0; display: flex; gap: 0.08em;
+  font: 700 clamp(26px, 4.6vw, 58px)/1 var(--display);
+  letter-spacing: 0.1em;
+}
+.wordmark span {
+  display: inline-block;
+  background: linear-gradient(180deg, #ffffff 0%, var(--glow) 55%, var(--ember) 110%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  opacity: 0; transform: translateY(0.6em) rotateX(80deg); filter: blur(8px);
+  animation: rise 1.2s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: calc(1.1s + var(--i) * 70ms);
+}
+.wordmark span:nth-child(1){--i:0}.wordmark span:nth-child(2){--i:1}.wordmark span:nth-child(3){--i:2}.wordmark span:nth-child(4){--i:3}
+.wordmark span:nth-child(5){--i:4}.wordmark span:nth-child(6){--i:5}.wordmark span:nth-child(7){--i:6}.wordmark span:nth-child(8){--i:7}.wordmark span:nth-child(9){--i:8}
+@keyframes rise { to { opacity: 1; transform: none; filter: blur(0); } }
+.tagline {
+  margin: 10px 0 0; color: var(--dust); letter-spacing: 0.32em; text-transform: uppercase; font-size: 10px;
+  opacity: 0; animation: fade 1.4s ease 2s forwards;
+}
+@keyframes fade { to { opacity: 1; } }
+
+/* ---------- catalogue plate ---------- */
+.plate {
+  position: fixed; z-index: 2;
+  top: calc(env(safe-area-inset-top, 0px) + 28px); right: max(16px, 3vw);
+  text-align: right; pointer-events: none;
+  opacity: 0; animation: fade 1.4s ease 2.2s forwards;
+}
+.plate-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--dust); }
+.plate-name { font: 400 clamp(16px, 2vw, 22px)/1.3 var(--display); letter-spacing: 0.08em; margin-top: 6px; transition: opacity .4s, transform .4s; }
+.plate-cat { color: var(--glow); font-size: 12px; margin-top: 2px; transition: opacity .4s; }
+.plate-stats { margin-top: 10px; font-size: 10px; color: var(--dust); letter-spacing: 0.1em; font-variant-numeric: tabular-nums; }
+.plate.swap .plate-name, .plate.swap .plate-cat { opacity: 0; transform: translateY(-4px); }
+
+/* ---------- dock ---------- */
+.dock {
+  position: fixed; z-index: 3; left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 44px);
+  transform: translateX(-50%);
+  width: min(960px, calc(100% - 32px));
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px;
+  padding: 10px;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  border-radius: 18px;
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: 0 20px 60px -20px rgba(80, 100, 255, 0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+  opacity: 0; animation: dockIn 1.2s cubic-bezier(.2,.8,.2,1) 2.4s forwards;
+}
+@keyframes dockIn { from { opacity: 0; transform: translate(-50%, 24px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+.forms, .toggles { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+
+.dock button, .dock input {
+  font: 400 11px/1 var(--mono); letter-spacing: 0.08em; color: var(--star);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid transparent; border-radius: 10px;
+  padding: 10px 12px;
+}
+.dock button { cursor: pointer; text-transform: lowercase; transition: background .25s, border-color .25s, color .25s, transform .25s; }
+.dock button:hover { background: rgba(160,180,255,0.1); transform: translateY(-1px); }
+.dock button:focus-visible, .dock input:focus-visible { outline: 1px solid var(--glow); outline-offset: 2px; }
+.forms button .k { color: var(--dust); margin-right: 6px; }
+.forms button[aria-current="true"] { border-color: var(--edge); background: rgba(160,180,255,0.14); color: #fff; box-shadow: 0 0 18px -4px var(--glow); }
+
+.write { display: flex; gap: 6px; }
+.write input { width: 170px; border-color: var(--edge); background: rgba(0,0,0,0.25); }
+.write input::placeholder { color: var(--dust); }
+.write button { background: linear-gradient(135deg, rgba(159,180,255,.35), rgba(255,179,138,.35)); }
+.toggles button[aria-pressed="false"] { color: var(--dust); }
+
+.hint {
+  position: fixed; z-index: 2; left: 0; right: 0; text-align: center; margin: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  padding-inline: 16px;
+  font-size: 10px; letter-spacing: 0.2em; color: var(--dust); text-transform: uppercase;
+  pointer-events: none; opacity: 0; animation: fade 1.4s ease 3s forwards;
+}
+
+@media (max-width: 640px) {
+  .plate { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 250px); right: 16px; }
+  .write input { width: 140px; }
+  .hint { font-size: 9px; letter-spacing: 0.1em; }
+  .dock { bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 1ms !important; animation-delay: 0ms !important; transition-duration: 1ms !important; }
+}
